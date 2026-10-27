@@ -45,7 +45,13 @@ public class HomePageController {
 
     @FXML
     void btnaddmembersOnAction(ActionEvent event) {
-
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/addmember_page.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.show();
     }
 
     @FXML
@@ -66,7 +72,13 @@ public class HomePageController {
 
     @FXML
     void btnissuebookOnAction(ActionEvent event) {
-
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/issuebook_page.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.show();
     }
 
     @FXML
