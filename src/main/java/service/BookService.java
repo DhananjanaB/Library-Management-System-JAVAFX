@@ -4,6 +4,7 @@ import entity.Book;
 import repository.BookRepository;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class BookService {
 
@@ -11,6 +12,28 @@ public class BookService {
 
     public void addBook(String id, String title, String author, String category,
                         String yearText, String qtyText) throws SQLException {
+        Book book = buildBook(id, title, author, category, yearText, qtyText);
+        if (bookRepository.exists(book.getId())) {
+            throw new IllegalArgumentException("Book ID " + book.getId() + " already exists");
+        }
+        bookRepository.save(book);
+    }
+
+    public void updateBook(String id, String title, String author, String category,
+                           String yearText, String qtyText) throws SQLException {
+        bookRepository.update(buildBook(id, title, author, category, yearText, qtyText));
+    }
+
+    public void deleteBook(String id) throws SQLException {
+        bookRepository.delete(id);
+    }
+
+    public List<Book> getAllBooks() throws SQLException {
+        return bookRepository.findAll();
+    }
+
+    private Book buildBook(String id, String title, String author, String category,
+                           String yearText, String qtyText) {
         if (id.trim().isEmpty() || title.trim().isEmpty() || author.trim().isEmpty()
                 || category.trim().isEmpty() || yearText.trim().isEmpty() || qtyText.trim().isEmpty()) {
             throw new IllegalArgumentException("Fill in all the fields");
@@ -31,10 +54,6 @@ public class BookService {
         if (qty < 1) {
             throw new IllegalArgumentException("Quantity must be 1 or more");
         }
-        if (bookRepository.exists(id.trim())) {
-            throw new IllegalArgumentException("Book ID " + id.trim() + " already exists");
-        }
-
-        bookRepository.save(new Book(id.trim(), title.trim(), author.trim(), category.trim(), year, qty));
+        return new Book(id.trim(), title.trim(), author.trim(), category.trim(), year, qty);
     }
 }
