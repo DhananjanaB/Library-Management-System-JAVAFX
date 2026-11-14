@@ -3,39 +3,57 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
 public class DashboardPageController {
 
     @FXML
-    private Button btnhome;
+    private StackPane contentArea;
 
     @FXML
-    private Text txtborrowed;
-
-    @FXML
-    private Text txtoverdue;
-
-    @FXML
-    private Text txttotalbooks;
-
-    @FXML
-    private Text txttotalmembers;
-
-    @FXML
-    void btnhomeOnAction(ActionEvent event) {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/home_page.fxml"))));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.show();
+    public void initialize() {
+        loadPage("home_page");
     }
 
+    @FXML
+    void btnHomeOnAction(ActionEvent event) {
+        loadPage("home_page");
+    }
+
+    @FXML
+    void btnAddBookOnAction(ActionEvent event) {
+        loadPage("addbook_page");
+    }
+
+    @FXML
+    void btnViewBooksOnAction(ActionEvent event) {
+        loadPage("viewbook_page");
+    }
+
+    @FXML
+    void btnAddMemberOnAction(ActionEvent event) {
+        loadPage("addmember_page");
+    }
+
+    @FXML
+    void btnIssueBookOnAction(ActionEvent event) {
+        loadPage("issuebook_page");
+    }
+
+    @FXML
+    void btnReturnBookOnAction(ActionEvent event) {
+        loadPage("returnbook_page");
+    }
+
+    private void loadPage(String fxmlName) {
+        try {
+            Parent page = FXMLLoader.load(getClass().getResource("/view/" + fxmlName + ".fxml"));
+            contentArea.getChildren().setAll(page);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
