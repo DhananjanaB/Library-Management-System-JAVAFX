@@ -10,8 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import service.AuthService;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LoginPageController {
 
@@ -30,6 +32,8 @@ public class LoginPageController {
     @FXML
     private TextField txtUsername;
 
+    private final AuthService authService = new AuthService();
+
     @FXML
     void btnclearonAction(ActionEvent event) {
         txtUsername.clear();
@@ -40,25 +44,20 @@ public class LoginPageController {
 
     @FXML
     void btnloginonAction(ActionEvent event) {
-        String username = txtUsername.getText().trim();
-        String password = txtPassword.getText();
-
-        if (username.isEmpty() || password.isEmpty()) {
-            lblError.setText("Username and password are required");
-            return;
-        }
-
-        if (username.equals("Tharu") && password.equals("1234")) {
-            Stage stage = new Stage();
-            try {
-                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/home_page.fxml"))));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        try {
+            if (authService.login(txtUsername.getText(), txtPassword.getText())) {
+                Stage stage = (Stage) btnLogin.getScene().getWindow();
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/dashboard_page.fxml"))));
+                stage.centerOnScreen();
+            } else {
+                lblError.setText("Invalid username or password");
             }
-            stage.show();
-
-        } else {
-            lblError.setText("Invalid username or password");
+        } catch (IllegalArgumentException e) {
+            lblError.setText(e.getMessage());
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Cannot connect to the database").show();
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Cannot open the dashboard").show();
         }
     }
 }
