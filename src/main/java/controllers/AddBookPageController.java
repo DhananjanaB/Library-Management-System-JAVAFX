@@ -2,8 +2,12 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.text.Text;
+import javafx.scene.control.TextField;
+import service.BookService;
+
+import java.sql.SQLException;
 
 public class AddBookPageController {
 
@@ -14,39 +18,52 @@ public class AddBookPageController {
     private Button btnclear;
 
     @FXML
-    private Button btnhome;
+    private TextField txtAuthor;
 
     @FXML
-    private Text txtauthor;
+    private TextField txtBookId;
 
     @FXML
-    private Text txtbookid;
+    private TextField txtCategory;
 
     @FXML
-    private Text txtcategory;
+    private TextField txtQuantity;
 
     @FXML
-    private Text txtpublishedyear;
+    private TextField txtTitle;
 
     @FXML
-    private Text txtquantity;
+    private TextField txtYear;
 
-    @FXML
-    private Text txttitle;
+    private final BookService bookService = new BookService();
 
     @FXML
     void btnaddbookOnAction(ActionEvent event) {
-
+        try {
+            bookService.addBook(txtBookId.getText(), txtTitle.getText(), txtAuthor.getText(),
+                    txtCategory.getText(), txtYear.getText(), txtQuantity.getText());
+            new Alert(Alert.AlertType.INFORMATION, "Book added").show();
+            clearForm();
+        } catch (IllegalArgumentException e) {
+            new Alert(Alert.AlertType.WARNING, e.getMessage()).show();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Couldn't save the book").show();
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void btnclearOnAction(ActionEvent event) {
-
+        clearForm();
     }
 
-    @FXML
-    void btnhomeOnAction(ActionEvent event) {
-
+    private void clearForm() {
+        txtBookId.clear();
+        txtTitle.clear();
+        txtAuthor.clear();
+        txtCategory.clear();
+        txtYear.clear();
+        txtQuantity.clear();
+        txtBookId.requestFocus();
     }
-
 }
