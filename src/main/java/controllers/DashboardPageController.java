@@ -53,6 +53,11 @@ public class DashboardPageController {
         loadPage("returnbook_page");
     }
 
+    @FXML
+    void btnHistoryOnAction(ActionEvent event) {
+        loadPage("history_page");
+    }
+
     private void loadPage(String fxmlName) {
         try {
             Parent page = FXMLLoader.load(getClass().getResource("/view/" + fxmlName + ".fxml"));

@@ -20,6 +20,7 @@
             <Button fx:id="btnManageMembers" maxWidth="Infinity" mnemonicParsing="false" onAction="#btnManageMembersOnAction" text="Manage Members" />
             <Button fx:id="btnIssueBook" maxWidth="Infinity" mnemonicParsing="false" onAction="#btnIssueBookOnAction" text="Issue Book" />
             <Button fx:id="btnReturnBook" maxWidth="Infinity" mnemonicParsing="false" onAction="#btnReturnBookOnAction" text="Return Book" />
+            <Button fx:id="btnHistory" maxWidth="Infinity" mnemonicParsing="false" onAction="#btnHistoryOnAction" text="Borrowing History" />
          </children>
       </VBox>
    </left>

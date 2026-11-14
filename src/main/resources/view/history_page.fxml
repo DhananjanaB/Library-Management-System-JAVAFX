@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HistoryPageController">
+    <children>
+        <Label layoutX="40.0" layoutY="15.0" text="Borrowing History">
+            <font>
+                <Font name="Bell MT Bold" size="25.0" />
+            </font>
+        </Label>
+        <TableView fx:id="table" layoutX="40.0" layoutY="70.0" prefHeight="400.0" prefWidth="640.0">
+            <columns>
+                <TableColumn fx:id="colMember" prefWidth="130.0" text="Member" />
+                <TableColumn fx:id="colBook" prefWidth="150.0" text="Book" />
+                <TableColumn fx:id="colIssued" prefWidth="90.0" text="Issue date" />
+                <TableColumn fx:id="colDue" prefWidth="90.0" text="Due date" />
+                <TableColumn fx:id="colReturned" prefWidth="90.0" text="Return date" />
+                <TableColumn fx:id="colStatus" prefWidth="90.0" text="Status" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
