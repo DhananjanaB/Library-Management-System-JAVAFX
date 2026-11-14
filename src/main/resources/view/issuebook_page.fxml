@@ -1,45 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="518.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.IssueBookPageController">
+<AnchorPane prefHeight="400.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.IssueBookPageController">
    <children>
-      <Text layoutX="200.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Issue Book" wrappingWidth="128.1976318359375">
+      <Label layoutX="200.0" layoutY="30.0" text="Issue Book">
          <font>
             <Font name="Bell MT Bold" size="24.0" />
          </font>
-      </Text>
-      <Text fx:id="txtselectmember" layoutX="57.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Member">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtselectbook" layoutX="285.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Book">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtissuedate" layoutX="57.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Issue Date">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtduedate" layoutX="289.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Due Date">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <DatePicker layoutX="50.0" layoutY="227.0" />
-      <DatePicker layoutX="282.0" layoutY="227.0" />
-      <TextField layoutX="50.0" layoutY="146.0" />
-      <TextField layoutX="283.0" layoutY="146.0" />
-      <Button fx:id="btnissuebook" layoutX="50.0" layoutY="300.0" mnemonicParsing="false" onAction="#btissuebookOnAction" text="Issue Book" />
+      </Label>
+      <Label layoutX="50.0" layoutY="110.0" text="Select Member" />
+      <ComboBox fx:id="cmbMember" layoutX="50.0" layoutY="134.0" prefWidth="220.0" promptText="Choose a member" />
+      <Label layoutX="300.0" layoutY="110.0" text="Select Book" />
+      <ComboBox fx:id="cmbBook" layoutX="300.0" layoutY="134.0" prefWidth="220.0" promptText="Choose a book" />
+      <Label layoutX="50.0" layoutY="195.0" text="Issue Date" />
+      <DatePicker fx:id="dpIssueDate" layoutX="50.0" layoutY="219.0" prefWidth="220.0" />
+      <Label layoutX="300.0" layoutY="195.0" text="Due Date" />
+      <DatePicker fx:id="dpDueDate" layoutX="300.0" layoutY="219.0" prefWidth="220.0" />
+      <Button fx:id="btnissuebook" layoutX="50.0" layoutY="300.0" mnemonicParsing="false" onAction="#btnissuebookOnAction" text="Issue Book" />
       <Button fx:id="btnclear" layoutX="150.0" layoutY="300.0" mnemonicParsing="false" onAction="#btnclearOnAction" prefHeight="26.0" prefWidth="64.0" text="Clear" />
    </children>
 </AnchorPane>

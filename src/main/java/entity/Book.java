@@ -29,4 +29,9 @@ public class Book {
     public void setYear(int year) { this.year = year; }
     public int getQty() { return qty; }
     public void setQty(int qty) { this.qty = qty; }
+
+    @Override
+    public String toString() {
+        return id + " - " + title;
+    }
 }
