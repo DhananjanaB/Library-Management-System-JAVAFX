@@ -1,0 +1,55 @@
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: #f4f6fb;
+}
+
+/* all normal buttons */
+.button {
+    -fx-background-color: #3d5afe;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 7 16 7 16;
+    -fx-cursor: hand;
+}
+.button:hover {
+    -fx-background-color: #2f48d6;
+}
+
+/* inputs */
+.text-field, .password-field, .combo-box, .date-picker {
+    -fx-background-radius: 6;
+}
+
+/* table */
+.table-view .column-header-background {
+    -fx-background-color: #e3e7f1;
+}
+
+/* sidebar */
+.sidebar {
+    -fx-background-color: #1f2a44;
+    -fx-padding: 18 10 18 10;
+}
+.sidebar-title {
+    -fx-text-fill: white;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cfd6e6;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 9 12 9 12;
+}
+.nav-button:hover {
+    -fx-background-color: #2d3b5e;
+}
+.nav-active, .nav-active:hover {
+    -fx-background-color: #3d5afe;
+    -fx-text-fill: white;
+}
+.logout-button {
+    -fx-text-fill: #ff8a80;
+}

@@ -47,7 +47,9 @@ public class LoginPageController {
         try {
             if (authService.login(txtUsername.getText(), txtPassword.getText())) {
                 Stage stage = (Stage) btnLogin.getScene().getWindow();
-                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/dashboard_page.fxml"))));
+                Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/dashboard_page.fxml")));
+                scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+                stage.setScene(scene);
                 stage.centerOnScreen();
             } else {
                 lblError.setText("Invalid username or password");
