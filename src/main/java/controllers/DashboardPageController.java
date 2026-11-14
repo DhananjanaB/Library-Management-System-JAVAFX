@@ -39,6 +39,11 @@ public class DashboardPageController {
     }
 
     @FXML
+    void btnManageMembersOnAction(ActionEvent event) {
+        loadPage("managemember_page");
+    }
+
+    @FXML
     void btnIssueBookOnAction(ActionEvent event) {
         loadPage("issuebook_page");
     }
